@@ -10,7 +10,7 @@ const tabOptions = {
   showLabel: false,
   style: {
     height: '10%',
-    backgroundCOlor: COLORS.black,
+    backgroundColor: COLORS.black,
   },
 };
 
@@ -18,9 +18,9 @@ const Tabs = () => {
   return (
     <Tab.Navigator
       tabBarOptions={tabOptions}
-      screenOptions={(route) => ({
+      screenOptions={({route}) => ({
         tabBarIcon: ({ focused }) => {
-          const tintColor = focused ? COLORS.white : COLORS.gray;
+          const tintColor = focused ? COLORS.white : COLORS.primary;
 
           switch (route.name) {
             case 'Home':
@@ -47,10 +47,51 @@ const Tabs = () => {
                   }}
                 />
               );
+            case 'Notification':
+              return (
+                <Image
+                  source={icons.notification_icon}
+                  resizeMethod="contain"
+                  style={{
+                    tintColor: tintColor,
+                    width: 25,
+                    height: 25,
+                  }}
+                />
+              );
+            case 'Settings':
+              return (
+                <Image
+                  source={icons.menu_icon}
+                  resizeMethod="contain"
+                  style={{
+                    tintColor: tintColor,
+                    width: 25,
+                    height: 25,
+                  }}
+                />
+              );
           }
         },
       })}
-    ></Tab.Navigator>
+      >
+          <Tab.Screen
+              name='Home'
+              component={Home}
+          />
+          <Tab.Screen
+              name='Search'
+              component={Home}
+          />
+          <Tab.Screen
+              name='Notification'
+              component={Home}
+          />
+          <Tab.Screen
+              name='Settings'
+              component={Home}
+          />
+    </Tab.Navigator>
   );
 };
 
