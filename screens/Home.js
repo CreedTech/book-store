@@ -9,12 +9,15 @@ import {
   ActivityIndicator,
   FlatList,
 } from 'react-native';
+import { Snackbar } from 'react-native-paper';
 
 import { COLORS, FONTS, SIZES, icons, images } from '../constants';
 
 const Home = ({ navigation }) => {
+  message = 'Bookmarked Successfully';
   const [isLoading, setLoading] = useState(true);
   const [myBooks, setMyBooks] = useState([]);
+  const [snackVisible, setSnackVisible] = useState(false);
 
   const getBooks = async () => {
     try {
@@ -96,19 +99,26 @@ const Home = ({ navigation }) => {
     };
 
     return (
-      <View style={{ flex: 1}}>
+      <View style={{ flex: 1 }}>
         {/* Header */}
         <View
           style={{
-                    paddingHorizontal: SIZES.padding,
-                    paddingBottom:10,
+            paddingHorizontal: SIZES.padding,
+            paddingBottom: 10,
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}
         >
-          <Text style={{ ...FONTS.h2, color: COLORS.white, alignItems:'center', textAlign:'center' }}>My Book</Text>
-
-          
+          <Text
+            style={{
+              ...FONTS.h2,
+              color: COLORS.white,
+              alignItems: 'center',
+              textAlign: 'center',
+            }}
+          >
+            My Book
+          </Text>
         </View>
 
         {/* Books */}
@@ -211,7 +221,7 @@ const Home = ({ navigation }) => {
           {/* Bookmark Button */}
           <TouchableOpacity
             style={{ position: 'absolute', top: 5, right: 15 }}
-            onPress={() => console.log('Bookmark')}
+            onPress={() => setSnackVisible(!snackVisible)}
           >
             <Image
               source={icons.bookmark_icon}
@@ -254,6 +264,16 @@ const Home = ({ navigation }) => {
           <View>{renderCategoryData(myBooks)}</View>
         </View>
       </ScrollView>
+      <View>
+        <Snackbar
+          style={{ height: 50 }}
+          visible={snackVisible}
+          onDismiss={() => setSnackVisible(false)}
+          action={{ label: 'Ok' }}
+        >
+          {message}
+        </Snackbar>
+      </View>
     </SafeAreaView>
   );
 };
