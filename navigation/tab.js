@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Home } from '../screens';
+import { Home,Search } from '../screens';
 import { icons, COLORS } from '../constants';
 
 const Tab = createBottomTabNavigator();
@@ -27,7 +27,7 @@ const Tabs = () => {
               return (
                 <Image
                   source={icons.dashboard_icon}
-                  resizeMethod="contain"
+                  // resizeMethod="contain"
                   style={{
                     tintColor: tintColor,
                     width: 25,
@@ -39,7 +39,7 @@ const Tabs = () => {
               return (
                 <Image
                   source={icons.search_icon}
-                  resizeMethod="contain"
+                  // resizeMethod="contain"
                   style={{
                     tintColor: tintColor,
                     width: 25,
@@ -51,7 +51,7 @@ const Tabs = () => {
               return (
                 <Image
                   source={icons.notification_icon}
-                  resizeMethod="contain"
+                  // resizeMethod="contain"
                   style={{
                     tintColor: tintColor,
                     width: 25,
@@ -63,7 +63,7 @@ const Tabs = () => {
               return (
                 <Image
                   source={icons.menu_icon}
-                  resizeMethod="contain"
+                  // resizeMethod="contain"
                   style={{
                     tintColor: tintColor,
                     width: 25,
@@ -81,16 +81,16 @@ const Tabs = () => {
           />
           <Tab.Screen
               name='Search'
-              component={Home}
+              component={Search}
           />
-          <Tab.Screen
+          {/* <Tab.Screen
               name='Notification'
               component={Home}
           />
           <Tab.Screen
               name='Settings'
               component={Home}
-          />
+          /> */}
     </Tab.Navigator>
   );
 };

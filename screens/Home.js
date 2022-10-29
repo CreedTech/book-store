@@ -49,6 +49,7 @@ const Home = ({ navigation }) => {
     const renderItem = ({ item, index }) => {
       return (
         <TouchableOpacity
+        testID="book"
           style={{
             flex: 1,
             marginLeft: index == 0 ? SIZES.padding : 0,
@@ -124,14 +125,15 @@ const Home = ({ navigation }) => {
         {/* Books */}
         <View style={{ flex: 1, marginTop: SIZES.padding }}>
           {isLoading ? (
-            <ActivityIndicator />
+            <ActivityIndicator size="large" style={{ transform: [{ scaleX: 2 }, { scaleY: 2 }], flex: 1,justifyContent: 'center',alignItems: 'center', }}  testID="loading" and accessibilityLabel="App is loading books" />
           ) : (
             <FlatList
               data={myBooks}
               renderItem={renderItem}
               keyExtractor={(item) => `${item.id}`}
               horizontal
-              showsHorizontalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                accessibilityLabel="books"
             />
           )}
         </View>
@@ -142,7 +144,7 @@ const Home = ({ navigation }) => {
   function renderCategoryData(myBooks) {
     const renderItem = ({ item }) => {
       return (
-        <View style={{ marginVertical: SIZES.base }}>
+        <View style={{ marginVertical: SIZES.base }} testID="book" >
           <TouchableOpacity
             style={{ flex: 1, flexDirection: 'row' }}
             onPress={() =>
@@ -247,6 +249,7 @@ const Home = ({ navigation }) => {
           renderItem={renderItem}
           keyExtractor={(item) => `${item.id}`}
           showsVerticalScrollIndicator={false}
+          accessibilityLabel="books"
         />
       </View>
     );
@@ -255,7 +258,11 @@ const Home = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.black }}>
       {/* Body Section */}
+        {isLoading ? (
+          <ActivityIndicator size="large" style={{ transform: [{ scaleX: 2 }, { scaleY: 2 }], flex: 1,justifyContent: 'center',alignItems: 'center', }}  testID="loading" and accessibilityLabel="App is loading books" />
+        ) : (
       <ScrollView style={{ marginTop: SIZES.radius }}>
+            
         {/* Books Section */}
         <View>{renderMyBookSection(myBooks)}</View>
 
@@ -263,7 +270,9 @@ const Home = ({ navigation }) => {
         <View style={{ marginTop: SIZES.padding }}>
           <View>{renderCategoryData(myBooks)}</View>
         </View>
+        
       </ScrollView>
+        )}
       <View>
         <Snackbar
           style={{ height: 50 }}

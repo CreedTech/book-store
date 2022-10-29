@@ -1,14 +1,16 @@
 {
   "expo": {
-    "name": "my-react-native-project",
-    "slug": "my-react-native-project",
+    "name": "creed-book-store",
+    "slug": "creed-book-store",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "width": "50",
+      "height": "50",
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,11 +24,17 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#000000"
+      },
+      "package": "creed.bookstore"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ecaeaec5-c055-45a9-afdd-a246e1404520"
+      }
     }
   }
 }

@@ -31,7 +31,7 @@ const App = () => {
         return null;
     }
     return (
-        <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DarkTheme}>
             <Stack.Navigator
                 screenOptions={{
                     headerShown: false
